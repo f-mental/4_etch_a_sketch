@@ -1,17 +1,33 @@
 .pad {
     display: flex;
+    gap: 100px;
 }
 
 .largest-div {
     display: flex;
 }
 
-.small {
-    border: solid 1px black;
-    height: 50px;
-    width: 50px;
+.misc {
+    display: flex;
+    flex-direction: column;
 }
 
-.clear {
-    background-color: #ffffff;
+.small {
+    border: solid 1px black;
+    height: 35px;
+    width: 40px;
+}
+
+/* cursor class */
+
+.bucket {
+    cursor: url('./cursor/hover.cur'), auto;
+}
+
+.precise {
+    cursor: url('./cursor/precise.cur'), auto;
+}
+
+.erase {
+    cursor: url('./cursor/eraser.cur'), auto;
 }
