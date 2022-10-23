@@ -1,5 +1,5 @@
 const largestDiv = document.querySelector('.largest-div');
-const penStateform = document.querySelector('form');
+const penStateForm = document.querySelector('form');
 const randomButton = document.querySelector('.random');
 const colorDiv = document.querySelector('.colorpicker');
 const colorSelect = document.querySelector('.colorselect');
@@ -34,10 +34,6 @@ function getColor() {
     return color;
 }
 
-
-
-
-
 // div and boxes creators
 for (let i = 0; i < 16; i++) {
     
@@ -52,7 +48,7 @@ for (let i = 0; i < 16; i++) {
         })
         smallDiv.addEventListener('mouseover', () => {
             // get current pen state
-            let currentPenState = penStateform.penstate.value;
+            let currentPenState = penStateForm.penstate.value;
             let currentColor = getColor();
             if (currentPenState === 'hover') {
                 largestDiv.setAttribute('class', 'largest-div bucket');
