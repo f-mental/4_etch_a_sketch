@@ -13,11 +13,27 @@
     <div class="pad">
         <div class="largest-div"></div>
         <div class="misc">
-            <input type="color" class="colorpicker" value="#ffffff">
-            <label for="color">Color</label>
-            <button>Erase</button>
-            <button>Clear</button>
+            <div class="colorpicker options">
+                <h3>Color Options</h3>
+                <input type="color" class="colorselect" value="#000000">
+                <button class="random">Random</button>
+            </div>
+            <div class="options">
+                <h3>Drawing Options</h3>
+                <form action="">
+                    <input type="radio" name="penstate" value="hover" checked>
+                    <label for="hover">Hover</label>
+                    <input type="radio" name="penstate" value="precise">
+                    <label for="click">Click</label>
+                    <input type="radio" name="penstate" value="erase">
+                    <label for="erase">Erase</label>
+                </form>
+            </div>
+            <div class="options">
+                <button class="clear">Clear</button>
+            </div>
         </div>
     </div>
 </body>
 </html>
+
