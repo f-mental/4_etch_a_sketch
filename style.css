@@ -1,3 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
+
+body {
+    font-family: 'Satisfy', cursive;
+}
+
+h1 {
+    position: relative;
+    left: 270px;
+}
+
+div {
+    text-align: center;
+}
+
+
 .pad {
     display: flex;
     gap: 100px;
@@ -5,17 +21,56 @@
 
 .largest-div {
     display: flex;
+    border: solid 5px #000000;
 }
+
+/* div options */
 
 .misc {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    gap: 25px;
+}
+
+.options {
+    border: solid 2px black;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+.colorselect {
+    margin-right:25px;
 }
 
 .small {
     border: solid 1px black;
     height: 35px;
     width: 40px;
+}
+
+form {
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.clear {
+    border: none;
+    border-radius: 2px;
+    color: #ffffff;
+    font-size: 1.1rem;
+    padding: 10px;
+    background-color: red;
+}
+
+button, input {
+    cursor: pointer;
+}
+
+/* highlight */
+
+.highlight {
+    border-style: dotted;
+    opacity: 50%;
 }
 
 /* cursor class */
