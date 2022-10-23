@@ -15,6 +15,7 @@ randomButton.addEventListener('click', () => {
         colorSelect.disabled = false;
         randomButton.disabled = false;
         disableRandom.remove();
+        colorSelect.click();
     })
 })
 
@@ -51,17 +52,21 @@ for (let i = 0; i < 16; i++) {
             let currentPenState = penStateForm.penstate.value;
             let currentColor = getColor();
             if (currentPenState === 'hover') {
-                largestDiv.setAttribute('class', 'largest-div bucket');
+                smallDiv.setAttribute('class', 'small bucket');
                 smallDiv.style.backgroundColor = currentColor;
             } else if (currentPenState === 'precise') {
-                largestDiv.setAttribute('class', 'largest-div precise');
+                smallDiv.setAttribute('class', 'small precise');
                 smallDiv.addEventListener('click', () => {
                     smallDiv.style.backgroundColor = currentColor;
                 })
             } else if (currentPenState === 'erase') {
-                largestDiv.setAttribute('class', 'largest-div erase');
+                smallDiv.setAttribute('class', 'small erase highlight');
+                smallDiv.addEventListener('mouseleave', () => {
+                    smallDiv.classList.remove('highlight');
+                })
                 smallDiv.addEventListener('click', () => {
                     smallDiv.style.backgroundColor = '#ffffff';
+                    smallDiv.classList.remove('highlight');
                 })
             }
         })
