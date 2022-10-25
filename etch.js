@@ -1,27 +1,40 @@
-const largestDiv = document.querySelector('.largest-div');
-const penStateForm = document.querySelector('form');
+const pad = document.querySelector('.pad');
+let largestDiv;
+const penStateForm = document.querySelector('.penstateform');
 const randomButton = document.querySelector('.random');
 const colorDiv = document.querySelector('.colorpicker');
 const colorSelect = document.querySelector('.colorselect');
 const clearButton = document.querySelector('.clear');
+const gridForm = document.querySelector('.gridform');
+const popup = document.querySelector('.popup-wrapper')
+const popupClose = document.querySelector('.popup-close');
+const title = document.querySelector('h1');
+const changeGrid = document.querySelector('.change')
+let gridWidth;
+let gridLength;
 
+
+// check if random color option is selected
 randomButton.addEventListener('click', () => {
     colorSelect.disabled = true;
     randomButton.disabled = true;
+    colorSelect.classList.add('disabled');
+    randomButton.classList.add('disabled');
     let disableRandom = document.createElement('button');
-    disableRandom.innerText = 'Pick Color';
+    disableRandom.classList.add('random');
+    disableRandom.innerText = 'Pick New Color';
     colorDiv.append(disableRandom);
     disableRandom.addEventListener('click', () => {
         colorSelect.disabled = false;
         randomButton.disabled = false;
         disableRandom.remove();
         colorSelect.click();
+        colorSelect.classList.remove('disabled');
+        randomButton.classList.remove('disabled')
     })
 })
 
-
-
-// check if random color
+// get color based on the click event of random button
 function getColor() {
     let color;
     if (randomButton.disabled) {
@@ -35,42 +48,84 @@ function getColor() {
     return color;
 }
 
-// div and boxes creators
-for (let i = 0; i < 16; i++) {
-    
-    let bigDiv = document.createElement('div');
+// get gridLength and gridWidth from grid from
+gridForm.addEventListener('submit', ev => {
+    ev.preventDefault();
+    gridLength = parseInt(gridForm.length.value);
+    gridWidth = parseInt(gridForm.width.value);
+    popup.classList.add('hide');
+    title.classList.add('moveleft');
+    createGrid();
+})
 
-    for (let n = 0; n < 16; n++) {
-        let smallDiv = document.createElement('div');
-        smallDiv.classList.add('small');
-        // clear using clearButton
-        clearButton.addEventListener('click', () =>  {
-            smallDiv.style.backgroundColor = '#ffffff';
-        })
-        smallDiv.addEventListener('mouseover', () => {
-            // get current pen state
-            let currentPenState = penStateForm.penstate.value;
-            let currentColor = getColor();
-            if (currentPenState === 'hover') {
-                smallDiv.setAttribute('class', 'small bucket');
-                smallDiv.style.backgroundColor = currentColor;
-            } else if (currentPenState === 'precise') {
-                smallDiv.setAttribute('class', 'small precise');
-                smallDiv.addEventListener('click', () => {
+// automatically creates grid when popup is closed
+popupClose.addEventListener('click', () => {
+    popup.classList.add('hide');
+    title.classList.add('moveleft');
+    createGrid();
+})
+
+// change grid behavior
+// removes creates grid and replaces it with a new one
+changeGrid.addEventListener('click', () => {
+    // fix random button
+    randomButton.classList.add('hide');
+
+    // reset grid dimension
+    gridLength = 0;
+    gridWidth = 0;
+    
+    // removes current largestDiv and creates new one
+    largestDiv.remove();
+    popup.classList.remove('hide');
+    title.classList.remove('moveleft');
+    newDiv = document.createElement('div');
+    newDiv.classList.add('largest-div');
+    pad.prepend(newDiv);
+})
+
+function createGrid () {
+    // fix random button
+    randomButton.classList.remove('hide');
+
+    //create div after the form was submitted
+    largestDiv = document.querySelector('.largest-div')
+
+    for (let i = 0; i < (gridWidth || 16); i++) {
+        let bigDiv = document.createElement('div');
+        for (let n = 0; n < (gridLength || 16); n++) {
+            let smallDiv = document.createElement('div');
+            smallDiv.classList.add('small');
+            // clear using clearButton
+            clearButton.addEventListener('click', () =>  {
+                smallDiv.style.backgroundColor = '#ffffff';
+            })
+            smallDiv.addEventListener('mouseover', () => {
+                // get current pen state
+                let currentPenState = penStateForm.penstate.value;
+                let currentColor = getColor();
+                if (currentPenState === 'hover') {
+                    smallDiv.setAttribute('class', 'small bucket');
                     smallDiv.style.backgroundColor = currentColor;
-                })
-            } else if (currentPenState === 'erase') {
-                smallDiv.setAttribute('class', 'small erase highlight');
-                smallDiv.addEventListener('mouseleave', () => {
-                    smallDiv.classList.remove('highlight');
-                })
-                smallDiv.addEventListener('click', () => {
-                    smallDiv.style.backgroundColor = '#ffffff';
-                    smallDiv.classList.remove('highlight');
-                })
-            }
-        })
-        bigDiv.append(smallDiv);
-    }
-    largestDiv.append(bigDiv);
-};
+                } else if (currentPenState === 'precise') {
+                    smallDiv.setAttribute('class', 'small precise');
+                    smallDiv.addEventListener('click', () => {
+                        smallDiv.style.backgroundColor = currentColor;
+                    })
+                } else if (currentPenState === 'erase') {
+                    smallDiv.setAttribute('class', 'small erase highlight');
+                    smallDiv.addEventListener('mouseleave', () => {
+                        smallDiv.classList.remove('highlight');
+                    })
+                    smallDiv.addEventListener('click', () => {
+                        smallDiv.style.backgroundColor = '#ffffff';
+                        smallDiv.classList.remove('highlight');
+                    })
+                }
+            })
+            bigDiv.append(smallDiv);
+        }
+        largestDiv.append(bigDiv);
+    };
+}
+
