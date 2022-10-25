@@ -32,6 +32,7 @@ body {
 
 .popup-close {
     align-self: flex-end;
+    background-color: #ff0000;
     cursor: pointer;
     padding: 5px;
 }
@@ -106,7 +107,7 @@ body {
 }
 
 .small {
-    border: solid 1px black;
+    border: solid 1px #00000050;
     height: 35px;
     width: 40px;
 }
