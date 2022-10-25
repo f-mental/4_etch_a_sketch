@@ -9,7 +9,8 @@ const gridForm = document.querySelector('.gridform');
 const popup = document.querySelector('.popup-wrapper')
 const popupClose = document.querySelector('.popup-close');
 const title = document.querySelector('h1');
-const changeGrid = document.querySelector('.change')
+const changeGrid = document.querySelector('.change');
+let disableRandom = document.createElement('button');
 let gridWidth;
 let gridLength;
 
@@ -20,7 +21,6 @@ randomButton.addEventListener('click', () => {
     randomButton.disabled = true;
     colorSelect.classList.add('disabled');
     randomButton.classList.add('disabled');
-    let disableRandom = document.createElement('button');
     disableRandom.classList.add('random');
     disableRandom.innerText = 'Pick New Color';
     colorDiv.append(disableRandom);
@@ -68,7 +68,9 @@ popupClose.addEventListener('click', () => {
 // change grid behavior
 // removes creates grid and replaces it with a new one
 changeGrid.addEventListener('click', () => {
-    // fix random button
+    // fix color buttons button
+    colorSelect.classList.add('hide');
+    disableRandom.classList.add('hide');
     randomButton.classList.add('hide');
 
     // reset grid dimension
@@ -85,7 +87,9 @@ changeGrid.addEventListener('click', () => {
 })
 
 function createGrid () {
-    // fix random button
+    // fix color buttons button
+    colorSelect.classList.remove('hide');
+    disableRandom.classList.remove('hide');
     randomButton.classList.remove('hide');
 
     //create div after the form was submitted
