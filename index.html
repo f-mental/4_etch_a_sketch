@@ -9,6 +9,30 @@
     <script src="etch.js" defer></script>
 </head>
 <body>
+    <div class="popup-wrapper">
+        <div class="popup-content">
+            <div class="popup-close">X</div>
+            <div class="popup-header"> 
+                <span class=maintext>Welcome to Etch-a-Sketch</span><br> 
+                Not actually Etch-A-Sketch but color the grid!
+            </div>
+            <div class="form">
+                <form action="" class="gridform">
+                    <div class="lengthbox">
+                        <p class="inputlabel">Length</p>
+                        <input type="text" class= "inputbox" name="length" placeholder="16" maxlength="2">
+                    </div>
+                    <div class="widthbox">
+                        <p class="inputlabel">Width</p>
+                        <input type="text" class= "inputbox"  name ="width" placeholder="16" maxlength="2">
+                    </div>
+            </div>
+                    <input type="submit" value="Create Canvas" class="popup-submit">
+                    <p class="note">NOTE: Default canvas size is 16 x 16 squares</p>
+                    <p class="note">If any input is invalid, it will default to 16</p>
+                </form>
+        </div>
+    </div>
     <h1>Etch-a-Sketch</h1>
     <div class="pad">
         <div class="largest-div"></div>
@@ -16,11 +40,11 @@
             <div class="colorpicker options">
                 <h2>Color Options</h2>
                 <input type="color" class="colorselect" value="#000000">
-                <button class="random">Random</button>
+                <button class="random hide">Random</button>
             </div>
             <div class="options">
                 <h2>Drawing Options</h2>
-                <form action="">
+                <form action="" class="penstateform">
                     <input type="radio" name="penstate" value="hover" checked>
                     <label for="hover">Hover</label>
                     <input type="radio" name="penstate" value="precise">
@@ -29,7 +53,8 @@
                     <label for="erase">Erase</label>
                 </form>
             </div>
-            <div>
+            <div class="important-buttons">
+                <button class="change">Change Canvas Size</button>
                 <button class="clear">⚠️ Clear Drawing</button>
             </div>
         </div>
