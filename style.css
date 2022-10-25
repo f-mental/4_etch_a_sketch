@@ -2,29 +2,85 @@
 
 body {
     font-family: 'Satisfy', cursive;
-}
-
-h1 {
-    position: relative;
-    left: 270px;
-}
-
-div {
     text-align: center;
+    overflow-x: hidden;
 }
 
+/*  DIMENSIONS POP UP */
+
+.popup-wrapper {
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: #00000079;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.popup-content {
+    background-color: #457794;
+    color: #ffffff;
+    margin-top: 90px;
+    height: 430px;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.popup-close {
+    align-self: flex-end;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.popup-header {
+    font-size: 1.5rem;
+    margin-bottom: 50px;
+}
+
+.maintext {
+    font-size: 3rem;
+}
+
+.gridform {
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+    margin-bottom: 25px;
+}
+
+.inputbox {
+    width: 50px;
+    height: 50px;
+    font-size: 1.1rem;
+    text-align: center  ;
+}
+
+.popup-submit {
+    margin-bottom: 10px;
+}
+
+.note {
+    margin: 0;
+}
+
+/* PAD SECTION */
 
 .pad {
     display: flex;
     gap: 100px;
+    justify-content: center;
+    align-items: center;
 }
 
 .largest-div {
     display: flex;
     border: solid 5px #000000;
+    flex-grow: 0;
 }
-
-/* div options */
 
 .misc {
     display: flex;
@@ -34,13 +90,19 @@ div {
 }
 
 .options {
-    border: solid 2px black;
     margin-bottom: 10px;
     padding: 10px;
 }
 
 .colorselect {
-    margin-right:25px;
+    margin:0 25px 0 0;
+    height: 41px;
+    width: 86px;
+}
+
+.random {
+    position: relative;
+    bottom: 10px;
 }
 
 .small {
@@ -49,17 +111,38 @@ div {
     width: 40px;
 }
 
-form {
+form, .popup-close, p {
     font-family: 'Times New Roman', Times, serif;
 }
 
-.clear {
+label, .inputlabel {
+    font-size: 1.1rem;
+}
+
+/* button classes */
+
+.important-buttons {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+button, .popup-submit {
     border: none;
     border-radius: 2px;
     color: #ffffff;
     font-size: 1.1rem;
     padding: 10px;
-    background-color: red;
+    background-color: black;
+}
+
+.clear {
+    background-color: #ff0000;
+}
+.change {
+    background-color: #80007a;
 }
 
 button, input {
@@ -85,4 +168,20 @@ button, input {
 
 .erase {
     cursor: url('./cursor/eraser.cur'), auto;
+}
+
+
+/* special/javascript class */
+.moveleft {
+    position: relative;
+    right: 150px;
+}
+
+.hide {
+   display: none; 
+}
+
+.disabled {
+    cursor: not-allowed;
+    opacity: 15%;
 }
