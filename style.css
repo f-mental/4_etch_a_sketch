@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
 
 body {
+    background-color: #add8e6;
     font-family: 'Satisfy', cursive;
     text-align: center;
     overflow-x: hidden;
@@ -78,6 +79,7 @@ body {
 }
 
 .largest-div {
+    background-color: #ffffff;
     display: flex;
     border: solid 5px #000000;
     flex-grow: 0;
