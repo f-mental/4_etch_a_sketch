@@ -109,15 +109,16 @@ function createGrid () {
                 let currentPenState = penStateForm.penstate.value;
                 let currentColor = getColor();
                 if (currentPenState === 'hover') {
-                    smallDiv.setAttribute('class', 'small bucket');
+                    largestDiv.setAttribute('class', 'largest-div bucket');
                     smallDiv.style.backgroundColor = currentColor;
                 } else if (currentPenState === 'precise') {
-                    smallDiv.setAttribute('class', 'small precise');
+                    largestDiv.setAttribute('class', 'largest-div precise');
                     smallDiv.addEventListener('click', () => {
                         smallDiv.style.backgroundColor = currentColor;
                     })
                 } else if (currentPenState === 'erase') {
-                    smallDiv.setAttribute('class', 'small erase highlight');
+                    largestDiv.setAttribute('class', 'largest-div erase');
+                    smallDiv.classList.add('highlight');
                     smallDiv.addEventListener('mouseleave', () => {
                         smallDiv.classList.remove('highlight');
                     })
